@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import surveyIcon from '../../../public/svg/survey.svg';
+import surveyIcon from '../../assets/survey.svg';
 
 const LandingPage = () => {
 	return (
