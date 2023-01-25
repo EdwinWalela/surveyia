@@ -4,10 +4,10 @@ import SurveyListTableItem from './tableItem';
 const SurveyListTable = () => {
 	return (
 		<>
-			<div className="md:flow-root">
-				<h1 className="text-xl font-medium md:float-left pt-2">Your Surveys</h1>
-				<button className="md:float-right bg-black text-white px-4 py-2 rounded-lg border hover:border-black hover:bg-white hover:text-black active:scale-95 transition-all">
-					<Link to="#">Create A Survey</Link>
+			<div className="flow-root">
+				<h1 className="text-xl font-medium float-left pt-2">Your Surveys</h1>
+				<button className="float-right bg-black text-white px-4 py-2 rounded-lg border hover:border-black hover:bg-white hover:text-black active:scale-95 transition-all">
+					<Link to="create">Create A Survey</Link>
 				</button>
 			</div>
 			<table className="md:w-full md:mx-auto my-4 mb-16  text-left shadow-md ">
