@@ -4,7 +4,9 @@ const NavBar = () => {
 	return (
 		<div className="flex shadow-md md:px-5 py-3">
 			<div>
-				<h1 className="text-2xl md:pl-0 pl-3">Surveyia</h1>
+				<h1 className="text-2xl md:pl-0 pl-3">
+					<Link to="/">Surveyia</Link>
+				</h1>
 			</div>
 			<div className="flex-1 hidden md:block">
 				<ul className="text-center pt-1">

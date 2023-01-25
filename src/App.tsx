@@ -14,7 +14,7 @@ import NavBar from './layout/Navbar';
 
 const App = () => {
 	return (
-		<div className="App">
+		<>
 			<NavBar />
 			<Routes>
 				<Route path="/" element={<LandingPage />} />
@@ -32,7 +32,7 @@ const App = () => {
 				</Route>
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
-		</div>
+		</>
 	);
 };
 
