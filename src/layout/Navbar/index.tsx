@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 
 const NavBar = () => {
 	return (
-		<div className="flex shadow-md px-5 py-3">
+		<div className="flex shadow-md md:px-5 py-3">
 			<div>
-				<h1 className="text-2xl">Surveyia</h1>
+				<h1 className="text-2xl md:pl-0 pl-3">Surveyia</h1>
 			</div>
-			<div className="flex-1">
+			<div className="flex-1 hidden md:block">
 				<ul className="text-center pt-1">
 					<li className="inline-block mx-14 font-medium">
 						<Link to="#">Solutions</Link>
@@ -19,7 +19,7 @@ const NavBar = () => {
 					</li>
 				</ul>
 			</div>
-			<div className="pt-1">
+			<div className="pt-1 md:ml-0 ml-16">
 				<Link to="/login" className="mx-3 bg-black text-white py-2 px-4 rounded-lg">
 					Sign In
 				</Link>
