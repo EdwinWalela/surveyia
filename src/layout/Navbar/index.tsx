@@ -21,7 +21,7 @@ const NavBar = () => {
 					</li>
 				</ul>
 			</div>
-			<div className="pt-1 md:ml-0 ml-16">
+			<div className="pt-1 md:ml-0 ml-10">
 				<Link to="/login" className="mx-3 bg-black text-white py-2 px-4 rounded-lg">
 					Sign In
 				</Link>
