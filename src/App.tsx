@@ -10,10 +10,12 @@ import SurveyDetailPage from './pages/SurveyDetail';
 import PostSurveyPage from './pages/PostSurvey';
 import NotFoundPage from './pages/Notfound';
 import DisbursementPage from './pages/Disbursement';
+import NavBar from './layout/Navbar';
 
 const App = () => {
 	return (
 		<div className="App">
+			<NavBar />
 			<Routes>
 				<Route path="/" element={<LandingPage />} />
 				<Route path="/login" element={<LoginPage />} />
