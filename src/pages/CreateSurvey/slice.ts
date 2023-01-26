@@ -5,6 +5,11 @@ const initialState = {
 	title: '',
 	description: '',
 	questions: [],
+	payout: 0,
+	topup: 0,
+	isLoading: false,
+	hasError: false,
+	errorMessage: '',
 } as CreateSurveyInitialState;
 
 export const createSurveySlice = createSlice({
@@ -36,6 +41,12 @@ export const createSurveySlice = createSlice({
 			state.questions[questionIndex].choices[choiceIndex] = value;
 		},
 		submitSurvey: (state) => {},
+		updateTopUp: (state, action) => {
+			state.topup = action.payload;
+		},
+		updatePayout: (state, action) => {
+			state.payout = action.payload;
+		},
 	},
 });
 
@@ -46,5 +57,7 @@ export const {
 	addQuestionChoice,
 	updateQuestionChoice,
 	submitSurvey,
+	updatePayout,
+	updateTopUp,
 } = createSurveySlice.actions;
 export default createSurveySlice.reducer;
