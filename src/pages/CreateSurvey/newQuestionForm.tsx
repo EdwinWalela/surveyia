@@ -60,7 +60,9 @@ const NewQuestionForm = (props: { index: number }) => {
 
 	return (
 		<div className="md:w-3/5 text-center mx-auto py-10 px-10 shadow-lg bg-white my-8 rounded-lg">
-			<label className="bg-black text-white px-2 py-1  rounded-full mr-2 text-xl">1</label>
+			<label className="bg-black text-white px-2 py-1  rounded-full mr-2 text-xl">
+				{props.index + 1}
+			</label>
 			<h3 className="inline text-lg font-medium">{title}</h3>
 			<div>
 				<input
