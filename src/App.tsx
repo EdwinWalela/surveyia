@@ -28,7 +28,7 @@ const App = () => {
 				<Route path="/survey">
 					<Route path=":id" element={<SurveyPage />} />
 					<Route path=":id/pre-complete" element={<DisbursementPage />} />
-					<Route path=":id/complete" element={<PostSurveyPage />} />
+					<Route path="complete" element={<PostSurveyPage />} />
 				</Route>
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>

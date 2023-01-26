@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Question from './question';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { fetchQuestionnaire, submitQuestionnaire } from './slice';
 
@@ -9,6 +9,7 @@ const SurveyPage = () => {
 	const dispatch = useAppDispatch();
 	const survey = useAppSelector((state) => state.survey);
 	const questions = survey.questions;
+	const navigate = useNavigate();
 
 	const [phone, UpdatePhone] = useState('');
 
@@ -24,6 +25,7 @@ const SurveyPage = () => {
 
 	function handleCompleteSurvey() {
 		dispatch(submitQuestionnaire({ id: String(id), phone: phone }));
+		navigate('/survey/complete');
 	}
 	return (
 		<div className="p-10">
