@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAppDispatch } from '../../hooks';
 import { Link } from 'react-router-dom';
+import { loginUser } from './slice';
 
 const LoginPage = () => {
 	const [email, setEmail] = useState('');
@@ -9,6 +10,13 @@ const LoginPage = () => {
 
 	function submitForm(e: React.FormEvent) {
 		e.preventDefault();
+		dispatch(
+			loginUser({
+				email,
+				password,
+				phoneNumber: '',
+			})
+		);
 	}
 
 	function updateEmail(e: React.FormEvent<HTMLInputElement>) {
