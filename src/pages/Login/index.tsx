@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
-import { useAppDispatch } from '../../hooks';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { Link, Navigate } from 'react-router-dom';
 import { loginUser } from './slice';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const dispatch = useAppDispatch();
+	const state = useAppSelector((state) => state.login);
+
+	useEffect(() => {
+		if (state.token) {
+			Navigate({ to: '/dashboard', replace: true });
+		}
+	}, [state.token]);
 
 	function submitForm(e: React.FormEvent) {
 		e.preventDefault();
