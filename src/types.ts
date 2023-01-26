@@ -9,6 +9,13 @@ export interface CreateSurveyInitialState {
 	errorMessage: string;
 }
 
+export interface SurveyInitialState {
+	questions: SurveyQuestion[];
+	isLoading: boolean;
+	hasError: boolean;
+	errorMessage: string;
+}
+
 export interface Survey {
 	title: string;
 	description: string;
