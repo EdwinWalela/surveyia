@@ -18,6 +18,7 @@ const NewQuestionForm = (props: { index: number }) => {
 	const [required, updateRequired] = useState(false);
 
 	function handleTitleChange(e: React.FormEvent<HTMLInputElement>) {
+		e.preventDefault();
 		updateTitle(e.currentTarget.value);
 		dispatch(
 			updateQuestionTitle({
@@ -38,6 +39,7 @@ const NewQuestionForm = (props: { index: number }) => {
 	}
 
 	function handleUpdateRequired(e: React.FormEvent<HTMLInputElement>) {
+		e.preventDefault();
 		updateRequired(!required);
 		dispatch(
 			updateQuestionRequired({
@@ -47,7 +49,8 @@ const NewQuestionForm = (props: { index: number }) => {
 		);
 	}
 
-	function handleAddChoice() {
+	function handleAddChoice(e: React.FormEvent) {
+		e.preventDefault();
 		dispatch(
 			addQuestionChoice({
 				index: props.index,

@@ -4,6 +4,7 @@ import FormHeader from './formHeader';
 import NewQuestionForm from './newQuestionForm';
 import { createQuestion, createSurvey, submitSurvey } from './slice';
 import TopupForm from './topupForm';
+import { Link } from 'react-router-dom';
 
 const SurveyForm = () => {
 	const questions = useAppSelector((state) => state.createSurvey.questions);
@@ -32,6 +33,14 @@ const SurveyForm = () => {
 
 	return (
 		<form action="" className="shadow-md" onSubmit={handleSubmit}>
+			{state.surveyId && (
+				<Link
+					to={`/survey/${state.surveyId}`}
+					className="text-center block bg-black text-white py-2 px-4 rounded-lg w-1/3 mx-auto my-4"
+				>
+					Attempt Survey
+				</Link>
+			)}
 			<FormHeader />
 			{questions.map((question, i) => (
 				<NewQuestionForm index={i} />

@@ -27,20 +27,30 @@ const create = async (survey: Survey) => {
 	} catch (error: any) {
 		throw new Error(`Failed to create survey: ${error.message}`);
 	}
-	return response.status;
+	return response.data;
 };
 
 const fetch = async (id: string) => {
 	let response;
 	try {
-		response = await axios.get(`${BASE_URL}/survey/${id}`);
+		response = await axios.get(`${BASE_URL}/user/questionare/${id}`);
 	} catch (error: any) {
 		throw new Error(`Failed to get survey: ${error.message}`);
 	}
 	return response.data;
 };
 
+const submit = async (id: string) => {
+	let response;
+	try {
+		response = await axios.options(`${BASE_URL}/user/questionare/${id}`);
+	} catch (error: any) {
+		throw new Error(`Failed to get survey: ${error.message}`);
+	}
+};
+
 export default {
 	create,
 	fetch,
+	submit,
 };

@@ -12,6 +12,7 @@ const initialState = {
 	hasError: false,
 	errorMessage: '',
 	token: '',
+	surveyId: '',
 } as CreateSurveyInitialState;
 
 export const createSurvey = createAsyncThunk(
@@ -20,6 +21,7 @@ export const createSurvey = createAsyncThunk(
 		let res;
 		try {
 			res = await api.create(survey);
+			console.log(res);
 		} catch (error: any) {
 			return rejectWithValue(error.message);
 		}
@@ -85,6 +87,7 @@ export const createSurveySlice = createSlice({
 			state.isLoading = false;
 			state.hasError = false;
 			state.errorMessage = '';
+			state.surveyId = action.payload.data.id;
 		});
 		builder.addCase(createSurvey.rejected, (state, action) => {
 			state.isLoading = false;
