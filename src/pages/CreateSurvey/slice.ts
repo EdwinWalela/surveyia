@@ -11,6 +11,7 @@ const initialState = {
 	isLoading: false,
 	hasError: false,
 	errorMessage: '',
+	token: '',
 } as CreateSurveyInitialState;
 
 export const createSurvey = createAsyncThunk(
@@ -54,6 +55,18 @@ export const createSurveySlice = createSlice({
 			let value = action.payload.value;
 			state.questions[questionIndex].choices[choiceIndex] = value;
 		},
+		updateQuestionTitle: (state, action) => {
+			let questionIndex = action.payload.questionIndex;
+			state.questions[questionIndex].title = action.payload.value;
+		},
+		updateQuestionType: (state, action) => {
+			let questionIndex = action.payload.questionIndex;
+			state.questions[questionIndex].type = action.payload.value;
+		},
+		updateQuestionRequired: (state, action) => {
+			let questionIndex = action.payload.questionIndex;
+			state.questions[questionIndex].required = !state.questions[questionIndex].required;
+		},
 		submitSurvey: (state) => {},
 		updateTopUp: (state, action) => {
 			state.topup = action.payload;
@@ -90,5 +103,8 @@ export const {
 	submitSurvey,
 	updatePayout,
 	updateTopUp,
+	updateQuestionTitle,
+	updateQuestionType,
+	updateQuestionRequired,
 } = createSurveySlice.actions;
 export default createSurveySlice.reducer;

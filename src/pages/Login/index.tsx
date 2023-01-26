@@ -10,12 +10,6 @@ const LoginPage = () => {
 	const dispatch = useAppDispatch();
 	const state = useAppSelector((state) => state.login);
 
-	useEffect(() => {
-		if (state.token) {
-			Navigate({ to: '/dashboard', replace: true });
-		}
-	}, [state.token]);
-
 	function submitForm(e: React.FormEvent) {
 		e.preventDefault();
 		dispatch(
@@ -33,6 +27,9 @@ const LoginPage = () => {
 
 	function updatePassword(e: React.FormEvent<HTMLInputElement>) {
 		setPassword(e.currentTarget.value);
+	}
+	if (state.token) {
+		return <Navigate to="/dashboard" />;
 	}
 
 	return (

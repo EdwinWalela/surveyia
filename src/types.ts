@@ -6,7 +6,7 @@ export interface CreateSurveyInitialState {
 	topup: number;
 	isLoading: boolean;
 	hasError: boolean;
-	errorMessage: '';
+	errorMessage: string;
 }
 
 export interface Survey {
@@ -15,6 +15,7 @@ export interface Survey {
 	questions: SurveyQuestion[];
 	payout: number;
 	topup: number;
+	token: string;
 }
 
 export interface RegisterInitialState {

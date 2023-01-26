@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import ChoiceInput from './choiceInput';
-import { addQuestionChoice } from './slice';
+import {
+	addQuestionChoice,
+	updateQuestionRequired,
+	updateQuestionTitle,
+	updateQuestionType,
+} from './slice';
 
 const NewQuestionForm = (props: { index: number }) => {
 	const dispatch = useAppDispatch();
@@ -14,14 +19,32 @@ const NewQuestionForm = (props: { index: number }) => {
 
 	function handleTitleChange(e: React.FormEvent<HTMLInputElement>) {
 		updateTitle(e.currentTarget.value);
+		dispatch(
+			updateQuestionTitle({
+				value: e.currentTarget.value,
+				questionIndex: props.index,
+			})
+		);
 	}
 
 	function handleTypeChange(e: React.FormEvent<HTMLSelectElement>) {
 		updateType(e.currentTarget.value);
+		dispatch(
+			updateQuestionType({
+				value: e.currentTarget.value,
+				questionIndex: props.index,
+			})
+		);
 	}
 
-	function handleUpdateRequired() {
+	function handleUpdateRequired(e: React.FormEvent<HTMLInputElement>) {
 		updateRequired(!required);
+		dispatch(
+			updateQuestionRequired({
+				value: e.currentTarget.value,
+				questionIndex: props.index,
+			})
+		);
 	}
 
 	function handleAddChoice() {

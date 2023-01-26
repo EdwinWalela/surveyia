@@ -2,19 +2,31 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import FormHeader from './formHeader';
 import NewQuestionForm from './newQuestionForm';
-import { createQuestion, submitSurvey } from './slice';
+import { createQuestion, createSurvey, submitSurvey } from './slice';
 import TopupForm from './topupForm';
 
 const SurveyForm = () => {
 	const questions = useAppSelector((state) => state.createSurvey.questions);
+	const state = useAppSelector((state) => state.createSurvey);
 	const dispatch = useAppDispatch();
+	const token = useAppSelector((state) => state.login.token);
 
 	function handleSubmit(e: React.FormEvent) {
 		e.preventDefault();
-		dispatch(submitSurvey());
+		dispatch(
+			createSurvey({
+				title: state.title,
+				description: state.description,
+				questions: state.questions,
+				payout: state.payout,
+				topup: state.topup,
+				token,
+			})
+		);
 	}
 
-	function handleAddQuestion() {
+	function handleAddQuestion(e: React.FormEvent) {
+		e.preventDefault();
 		dispatch(createQuestion());
 	}
 

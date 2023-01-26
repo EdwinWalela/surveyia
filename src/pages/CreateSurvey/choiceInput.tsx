@@ -8,7 +8,13 @@ const ChoiceInput = (props: { choiceIndex: number; questionIndex: number }) => {
 	const value = questions[props.questionIndex].choices[props.choiceIndex];
 
 	function handleOnChange(e: React.FormEvent<HTMLInputElement>) {
-		dispatch(updateQuestionChoice({}));
+		dispatch(
+			updateQuestionChoice({
+				choiceIndex: props.choiceIndex,
+				questionIndex: props.questionIndex,
+				value: e.currentTarget.value,
+			})
+		);
 	}
 
 	return (
