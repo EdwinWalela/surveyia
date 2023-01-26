@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Question from './question';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -10,14 +10,20 @@ const SurveyPage = () => {
 	const survey = useAppSelector((state) => state.survey);
 	const questions = survey.questions;
 
+	const [phone, UpdatePhone] = useState('');
+
 	useEffect(() => {
 		if (id) {
 			dispatch(fetchQuestionnaire(id));
 		}
 	}, []);
 
+	function handlePhoneUpdate(e: React.FormEvent<HTMLInputElement>) {
+		UpdatePhone(e.currentTarget.value);
+	}
+
 	function handleCompleteSurvey() {
-		dispatch(submitQuestionnaire(String(id)));
+		dispatch(submitQuestionnaire({ id: String(id), phone: phone }));
 	}
 	return (
 		<div className="p-10">
@@ -29,6 +35,8 @@ const SurveyPage = () => {
 			<label className="block text-center">Enter your phone number to receive the payout</label>
 			<input
 				type="text"
+				value={phone}
+				onChange={handlePhoneUpdate}
 				className="border border-black px-2 py-3 rounded-lg block mx-auto my-4 w-1/3"
 				placeholder="Enter phone number"
 			/>

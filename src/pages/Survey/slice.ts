@@ -26,10 +26,10 @@ export const fetchQuestionnaire = createAsyncThunk(
 
 export const submitQuestionnaire = createAsyncThunk(
 	'questionnaire/submit',
-	async (id: string, { rejectWithValue }) => {
+	async (payload: { phone: string; id: string }, { rejectWithValue }) => {
 		let res;
 		try {
-			res = await api.submit(id);
+			res = await api.submit(payload.id, payload.phone);
 		} catch (error: any) {
 			return rejectWithValue(error.message);
 		}

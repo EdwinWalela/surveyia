@@ -40,10 +40,12 @@ const fetch = async (id: string) => {
 	return response.data;
 };
 
-const submit = async (id: string) => {
+const submit = async (id: string, phone: string) => {
 	let response;
 	try {
-		response = await axios.options(`${BASE_URL}/user/questionare/${id}`);
+		response = await axios.post(`${BASE_URL}/user/questionare/${id}`, {
+			phone: phone,
+		});
 	} catch (error: any) {
 		throw new Error(`Failed to get survey: ${error.message}`);
 	}
