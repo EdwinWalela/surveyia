@@ -9,6 +9,14 @@ export interface CreateSurveyInitialState {
 	errorMessage: '';
 }
 
+export interface Survery {
+	title: string;
+	description: string;
+	questions: SurveyQuestion[];
+	payout: number;
+	topup: number;
+}
+
 export interface RegisterInitialState {
 	email: string;
 	password: string;
