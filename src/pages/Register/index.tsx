@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { registerUser } from './slice';
+import Loader from '../../common/loader';
 
 const RegisterPage = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [confirmPassword, setConfirmPassword] = useState('');
-	const [termsAndCondition, setTermsAndConditions] = useState(false);
+	const [phoneNumber, setPhoneNumber] = useState('');
 	const [passwordValid, setPasswordValid] = useState(false);
 	const [passwordError, setPasswordError] = useState('');
 	const [emailValid, setEmailError] = useState(true);
 
 	const dispatch = useAppDispatch();
+	const state = useAppSelector((state) => state.register);
 
 	useEffect(() => {
 		if (password.length < 5) {
@@ -22,16 +24,6 @@ const RegisterPage = () => {
 			setPasswordValid(true);
 		}
 	}, [password]);
-
-	useEffect(() => {
-		if (password != confirmPassword) {
-			setPasswordValid(false);
-			setPasswordError('Passwords do not match');
-		} else {
-			setPasswordValid(true);
-			setPasswordError('');
-		}
-	}, [confirmPassword]);
 
 	useEffect(() => {
 		if (email) {
@@ -51,20 +43,25 @@ const RegisterPage = () => {
 		setEmail(e.currentTarget.value);
 	}
 
-	function updateConfirmPassword(e: React.FormEvent<HTMLInputElement>) {
-		setConfirmPassword(e.currentTarget.value);
-	}
-
-	function updateTermsAndConditions() {
-		setTermsAndConditions((isChecked) => (isChecked ? false : true));
+	function updatePhone(e: React.FormEvent<HTMLInputElement>) {
+		setPhoneNumber(e.currentTarget.value);
 	}
 
 	function submitForm(e: React.FormEvent) {
 		e.preventDefault();
+		dispatch(
+			registerUser({
+				email,
+				password,
+				phoneNumber,
+			})
+		);
 	}
 
 	return (
 		<>
+			{state.hasError && <pre className="text-center text-red-500">Failed to register</pre>}
+			{state.isLoading && <Loader />}
 			<section className="">
 				<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
 					<div className="w-full bg-white rounded-lg shadow-lg dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -122,41 +119,16 @@ const RegisterPage = () => {
 										htmlFor="confirm-password"
 										className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 									>
-										Confirm password
+										Phone
 									</label>
 									<input
-										type="password"
-										name="confirm-password"
-										id="confirm-password"
-										value={confirmPassword}
-										onChange={updateConfirmPassword}
-										placeholder="••••••••"
+										type="text"
+										onChange={updatePhone}
+										value={phoneNumber}
+										placeholder="+2547000000"
 										className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 										required={true}
 									/>
-								</div>
-								<div className="flex items-start">
-									<div className="flex items-center h-5">
-										<input
-											id="terms"
-											aria-describedby="terms"
-											type="checkbox"
-											onClick={updateTermsAndConditions}
-											className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-											required={true}
-										/>
-									</div>
-									<div className="ml-3 text-sm">
-										<label htmlFor="terms" className="font-light text-gray-500 dark:text-gray-300">
-											I accept the{' '}
-											<a
-												className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-												href="#"
-											>
-												Terms and Conditions
-											</a>
-										</label>
-									</div>
 								</div>
 								<button
 									type="submit"

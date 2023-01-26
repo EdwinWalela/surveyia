@@ -28,7 +28,7 @@ const login = async (user: User) => {
 	} catch (error: any) {
 		throw new Error(`Failed to register: ${error.message}`);
 	}
-	return response.status;
+	return response.data;
 };
 
 export default {

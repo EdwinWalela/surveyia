@@ -9,6 +9,24 @@ export interface CreateSurveyInitialState {
 	errorMessage: '';
 }
 
+export interface RegisterInitialState {
+	email: string;
+	password: string;
+	phone: string;
+	isLoading: boolean;
+	hasError: boolean;
+	errorMessage: '';
+}
+
+export interface LoginInitialState {
+	email: string;
+	password: string;
+	token: string;
+	isLoading: boolean;
+	hasError: boolean;
+	errorMessage: '';
+}
+
 export interface User {
 	email: string;
 	password: string;
