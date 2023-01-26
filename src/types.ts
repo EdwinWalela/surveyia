@@ -9,7 +9,7 @@ export interface CreateSurveyInitialState {
 	errorMessage: '';
 }
 
-export interface Survery {
+export interface Survey {
 	title: string;
 	description: string;
 	questions: SurveyQuestion[];

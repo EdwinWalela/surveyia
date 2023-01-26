@@ -1,5 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
-import type { CreateSurveyInitialState } from '../../types';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import type { CreateSurveyInitialState, Survey } from '../../types';
+import api from '../../api/survey';
 
 const initialState = {
 	title: '',
@@ -11,6 +12,19 @@ const initialState = {
 	hasError: false,
 	errorMessage: '',
 } as CreateSurveyInitialState;
+
+export const createSurvey = createAsyncThunk(
+	'survey/register',
+	async (survey: Survey, { rejectWithValue }) => {
+		let res;
+		try {
+			res = await api.create(survey);
+		} catch (error: any) {
+			return rejectWithValue(error.message);
+		}
+		return res;
+	}
+);
 
 export const createSurveySlice = createSlice({
 	name: 'create-survey',
@@ -47,6 +61,23 @@ export const createSurveySlice = createSlice({
 		updatePayout: (state, action) => {
 			state.payout = action.payload;
 		},
+	},
+	extraReducers: (builder) => {
+		builder.addCase(createSurvey.pending, (state, action) => {
+			state.isLoading = true;
+			state.hasError = false;
+			state.errorMessage = '';
+		});
+		builder.addCase(createSurvey.fulfilled, (state, action) => {
+			state.isLoading = false;
+			state.hasError = false;
+			state.errorMessage = '';
+		});
+		builder.addCase(createSurvey.rejected, (state, action) => {
+			state.isLoading = false;
+			state.hasError = true;
+			state.errorMessage = '';
+		});
 	},
 });
 
