@@ -5,7 +5,7 @@ const LandingPage = () => {
 	return (
 		<div className="md:flex p-10 m-0">
 			<div className="md:w-1/2">
-				<h1 className="md:text-5xl text-2xl font-medium leading-relaxed">
+				<h1 className="md:text-5xl mt-16 text-2xl font-medium leading-4">
 					Get <strong className="text-blue-500">10x</strong> More Responses{' '}
 					<br className="hidden md:block" /> On Your Surveys
 				</h1>
