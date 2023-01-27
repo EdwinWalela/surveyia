@@ -13,6 +13,7 @@ const initialState = {
 	errorMessage: '',
 	token: '',
 	surveyId: '',
+	activePage: 0,
 } as CreateSurveyInitialState;
 
 export const createSurvey = createAsyncThunk(
@@ -76,6 +77,9 @@ export const createSurveySlice = createSlice({
 		updatePayout: (state, action) => {
 			state.payout = action.payload;
 		},
+		updateActivePage: (state, action) => {
+			state.activePage = action.payload;
+		},
 	},
 	extraReducers: (builder) => {
 		builder.addCase(createSurvey.pending, (state, action) => {
@@ -109,5 +113,6 @@ export const {
 	updateQuestionTitle,
 	updateQuestionType,
 	updateQuestionRequired,
+	updateActivePage,
 } = createSurveySlice.actions;
 export default createSurveySlice.reducer;

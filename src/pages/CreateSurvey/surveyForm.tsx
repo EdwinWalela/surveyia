@@ -1,10 +1,10 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import FormHeader from './formHeader';
-import NewQuestionForm from './newQuestionForm';
 import { createQuestion, createSurvey, submitSurvey } from './slice';
 import TopupForm from './topupForm';
-import { Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
+import Questions from './questions';
 
 const SurveyForm = () => {
 	const questions = useAppSelector((state) => state.createSurvey.questions);
@@ -26,11 +26,6 @@ const SurveyForm = () => {
 		);
 	}
 
-	function handleAddQuestion(e: React.FormEvent) {
-		e.preventDefault();
-		dispatch(createQuestion());
-	}
-
 	return (
 		<form action="" className="shadow-md" onSubmit={handleSubmit}>
 			{state.surveyId && (
@@ -41,22 +36,14 @@ const SurveyForm = () => {
 					Attempt Survey
 				</Link>
 			)}
-			<FormHeader />
-			{questions.map((question, i) => (
-				<NewQuestionForm index={i} />
-			))}
-			<div className="mt-10">
-				<button
-					onClick={handleAddQuestion}
-					className="bg-black text-white px-4 py-2 rounded-lg block mx-auto border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out"
-				>
-					Add Question
-				</button>
-				<TopupForm />
+			{state.activePage == 0 && <FormHeader />}
+			{state.activePage == 1 && <Questions questions={questions} />}
+			{state.activePage == 2 && <TopupForm />}
+			{state.activePage == 2 && (
 				<button className="w-full md:w-3/5 bg-black text-white px-4 py-3 rounded-lg block mx-auto my-8 border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out">
 					Create Survey
 				</button>
-			</div>
+			)}
 		</form>
 	);
 };

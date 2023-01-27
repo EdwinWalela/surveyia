@@ -8,6 +8,7 @@ export interface CreateSurveyInitialState {
 	hasError: boolean;
 	errorMessage: string;
 	surveyId: string;
+	activePage: number;
 }
 
 export interface SurveyInitialState {

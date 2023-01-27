@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { createQuestion, updateActivePage } from './slice';
+
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { updateSurveyDescription, updateSurveyTitle } from './slice';
 
@@ -8,12 +10,19 @@ const FormHeader = () => {
 
 	const title = state.title;
 	const description = state.description;
+	const questions = state.questions;
 
 	function handleTitleChange(e: React.FormEvent<HTMLInputElement>) {
 		dispatch(updateSurveyTitle(e.currentTarget.value));
 	}
 	function handleDescriptionChange(e: React.FormEvent<HTMLTextAreaElement>) {
 		dispatch(updateSurveyDescription(e.currentTarget.value));
+	}
+
+	function handleAddQuestion(e: React.FormEvent) {
+		e.preventDefault();
+		dispatch(updateActivePage(1));
+		dispatch(createQuestion());
 	}
 
 	return (
@@ -35,6 +44,14 @@ const FormHeader = () => {
 				cols={50}
 				rows={5}
 			/>
+			{questions.length == 0 && (
+				<button
+					onClick={handleAddQuestion}
+					className="bg-black text-white px-4 py-2 rounded-lg block mx-auto border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out"
+				>
+					Add Questions
+				</button>
+			)}
 		</div>
 	);
 };
