@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { updatePayout, updateTopUp } from './slice';
+import { updatePayout, updateTopUp, updateActivePage } from './slice';
 
 const TopupForm = () => {
 	const dispatch = useAppDispatch();
@@ -8,19 +8,29 @@ const TopupForm = () => {
 
 	const payout = state.payout;
 	const topup = state.topup;
-
 	const responses = topup / payout;
 
 	function handleTopUpChange(e: React.FormEvent<HTMLInputElement>) {
-		dispatch(updateTopUp(e.currentTarget.value));
+		dispatch(updateTopUp(Number(e.currentTarget.value)));
 	}
 
 	function handlePayoutChange(e: React.FormEvent<HTMLInputElement>) {
-		dispatch(updatePayout(e.currentTarget.value));
+		dispatch(updatePayout(Number(e.currentTarget.value)));
+	}
+
+	function handlePreviousStep(e: React.FormEvent) {
+		e.preventDefault();
+		dispatch(updateActivePage(1));
 	}
 
 	return (
 		<div className="mt-8">
+			<button
+				onClick={handlePreviousStep}
+				className="bg-black text-white float-left px-4 py-2 rounded-lg  mx-6 border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out"
+			>
+				Go Back
+			</button>
 			<div className="flex justify-center">
 				<div className="mx-5">
 					<label className="font-medium block my-2">Specify Payout Per Respondent</label>
@@ -45,7 +55,9 @@ const TopupForm = () => {
 			</div>
 
 			<h3 className="font-medium block my-2 text-center">Maximum Responses</h3>
-			<h1 className="text-center text-6xl font-bold">{responses}</h1>
+			<h1 className="text-center text-6xl font-bold">
+				{topup == 0 && payout == 0 ? 0 : responses}
+			</h1>
 		</div>
 	);
 };

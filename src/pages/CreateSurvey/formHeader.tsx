@@ -21,8 +21,15 @@ const FormHeader = () => {
 
 	function handleAddQuestion(e: React.FormEvent) {
 		e.preventDefault();
-		dispatch(updateActivePage(1));
-		dispatch(createQuestion());
+
+		if (title != '' && description != '') {
+			dispatch(updateActivePage(1));
+			if (questions.length == 0) {
+				dispatch(createQuestion());
+			}
+		} else {
+			alert('Please enter a title and description for your survey');
+		}
 	}
 
 	return (
@@ -44,14 +51,13 @@ const FormHeader = () => {
 				cols={50}
 				rows={5}
 			/>
-			{questions.length == 0 && (
-				<button
-					onClick={handleAddQuestion}
-					className="bg-black text-white px-4 py-2 rounded-lg block mx-auto border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out"
-				>
-					Add Questions
-				</button>
-			)}
+
+			<button
+				onClick={handleAddQuestion}
+				className="bg-black text-white px-4 py-2 rounded-lg block mx-auto border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out"
+			>
+				Add Questions
+			</button>
 		</div>
 	);
 };
