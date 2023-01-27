@@ -27,7 +27,7 @@ const NavBar = () => {
 				</ul>
 			</div>
 			{!token && (
-				<div className="pt-1 md:ml-0 ml-10">
+				<div className="pt-1 md:ml-0 ml-auto">
 					<NavLink
 						to="/login"
 						className={({ isActive }) =>
