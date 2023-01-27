@@ -11,7 +11,8 @@ const LandingPage = () => {
 				</h1>
 				<p className="md:text-lg text-sm mt-3">
 					Create surveys and incentivize your target audience with{' '}
-					<br className="hidden md:block" /> airtime rewards to increase conversion.
+					<br className="hidden md:block" />{' '}
+					<strong className="text-blue-500">airtime rewards </strong>to increase conversion.
 				</p>
 				<div className="md:w-1/2 w-full">
 					<img src={surveyIcon} className="md:w-96 md:ml-0 ml-8 mx-auto md:hidden block" />
