@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useAppSelector } from '../../hooks';
 
 const NavBar = () => {
 	const token = useAppSelector((state) => state.login.token);
+	const location = useLocation();
+	const home = location.pathname == '/';
 
 	return (
 		<div className="flex shadow-md md:px-5 py-3">
@@ -26,12 +28,28 @@ const NavBar = () => {
 			</div>
 			{!token && (
 				<div className="pt-1 md:ml-0 ml-10">
-					<Link to="/login" className="mx-3 bg-black text-white py-2 px-4 rounded-lg">
+					<NavLink
+						to="/login"
+						className={({ isActive }) =>
+							!isActive
+								? 'mx-3 bg-black text-white py-2 px-4 rounded-lg border-2 border-black'
+								: 'mx-3 bg-white text-black py-2 px-4 rounded-lg border-2 border-black'
+						}
+					>
 						Sign In
-					</Link>
-					<Link to="/sign-up" className="mx-3  border border-black py-2 px-4 rounded-lg">
-						Sign Up
-					</Link>
+					</NavLink>
+					{!home && (
+						<NavLink
+							to="/sign-up"
+							className={({ isActive }) =>
+								!isActive && !home
+									? 'mx-3 bg-black text-white py-2 px-4 rounded-lg border-2 border-black'
+									: 'mx-3 bg-white text-black py-2 px-4 rounded-lg border-2 border-black'
+							}
+						>
+							Sign Up
+						</NavLink>
+					)}
 				</div>
 			)}
 		</div>
