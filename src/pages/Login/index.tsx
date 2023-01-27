@@ -46,8 +46,8 @@ const LoginPage = () => {
 									{loginState.errorMessage}
 								</p>
 							)}
-							<h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl ">
-								{newAccount && 'Sign In and Create Your First Survey'}
+							<h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-xl ">
+								{newAccount && 'Sign In To Create Your First Survey'}
 								{!newAccount && 'Welcome back'}
 							</h1>
 							<form className="space-y-4 md:space-y-6" action="#" onSubmit={submitForm}>

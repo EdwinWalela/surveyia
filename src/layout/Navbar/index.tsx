@@ -5,6 +5,7 @@ const NavBar = () => {
 	const token = useAppSelector((state) => state.login.token);
 	const location = useLocation();
 	const home = location.pathname == '/';
+	const respondent = location.pathname.includes('/survey/');
 
 	return (
 		<div className="flex shadow-md md:px-5 py-3">
@@ -26,7 +27,7 @@ const NavBar = () => {
 					</li>
 				</ul>
 			</div>
-			{!token && (
+			{!token && !respondent && (
 				<div className="pt-1 md:ml-0 ml-auto">
 					<NavLink
 						to="/login"
