@@ -21,7 +21,7 @@ const RegisterPage = () => {
 
 	useEffect(() => {
 		if (state.registerSuccess) {
-			navigate('/login', { replace: true });
+			navigate('/login', { replace: true, state: { username } });
 		}
 	}, [state.registerSuccess]);
 
