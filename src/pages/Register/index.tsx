@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { registerUser } from './slice';
 import Loader from '../../common/loader';
@@ -11,9 +11,19 @@ const RegisterPage = () => {
 	const [passwordValid, setPasswordValid] = useState(false);
 	const [passwordError, setPasswordError] = useState('');
 	const [emailValid, setEmailError] = useState(true);
+	const [username, setUsername] = useState('');
+	const [phoneNumberValid, setPhoneNumberValid] = useState(true);
 
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+
 	const state = useAppSelector((state) => state.register);
+
+	useEffect(() => {
+		if (state.registerSuccess) {
+			navigate('/login', { replace: true });
+		}
+	}, [state.registerSuccess]);
 
 	useEffect(() => {
 		if (password.length < 5) {
@@ -35,6 +45,12 @@ const RegisterPage = () => {
 		}
 	}, [email]);
 
+	useEffect(() => {
+		if (phoneNumber) {
+			setPhoneNumberValid(phoneNumber.length == 9);
+		}
+	});
+
 	function updatePassword(e: React.FormEvent<HTMLInputElement>) {
 		setPassword(e.currentTarget.value);
 	}
@@ -47,21 +63,30 @@ const RegisterPage = () => {
 		setPhoneNumber(e.currentTarget.value);
 	}
 
+	function updateUserName(e: React.FormEvent<HTMLInputElement>) {
+		setUsername(e.currentTarget.value);
+	}
+
 	function submitForm(e: React.FormEvent) {
 		e.preventDefault();
-		dispatch(
-			registerUser({
-				email,
-				password,
-				phoneNumber,
-			})
-		);
+		if (phoneNumberValid && emailValid) {
+			dispatch(
+				registerUser({
+					email,
+					password,
+					phoneNumber: `254${phoneNumber}`,
+					username,
+				})
+			);
+		} else {
+			alert('Ensure all fields are filled out correctly');
+		}
 	}
 
 	return (
 		<>
 			{state.hasError && <pre className="text-center text-red-500">Failed to register</pre>}
-			{state.isLoading && <Loader />}
+
 			<section className="">
 				<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
 					<div className="w-full bg-white rounded-lg shadow-lg dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -75,7 +100,7 @@ const RegisterPage = () => {
 										htmlFor="email"
 										className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 									>
-										Your email
+										Email Address
 									</label>
 									<input
 										type="email"
@@ -92,6 +117,22 @@ const RegisterPage = () => {
 											Please enter a valid email address
 										</pre>
 									)}
+								</div>
+								<div>
+									<label
+										htmlFor=""
+										className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+									>
+										Full Name
+									</label>
+									<input
+										type="text"
+										value={username}
+										onChange={updateUserName}
+										placeholder="John Doe"
+										className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+										required={true}
+									/>
 								</div>
 								<div>
 									<label
@@ -119,22 +160,33 @@ const RegisterPage = () => {
 										htmlFor="confirm-password"
 										className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 									>
-										Phone
+										Phone Number
 									</label>
-									<input
-										type="text"
-										onChange={updatePhone}
-										value={phoneNumber}
-										placeholder="+2547000000"
-										className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-										required={true}
-									/>
+									<div className="flex">
+										<span className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+											+254
+										</span>
+										<input
+											value={phoneNumber}
+											onChange={updatePhone}
+											type="text"
+											id="website-admin"
+											className="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+											placeholder="700000000"
+										/>
+									</div>
+									{!phoneNumberValid && (
+										<pre className="text-xs my-2 text-red-700">
+											Please enter a valid phone number
+										</pre>
+									)}
 								</div>
 								<button
 									type="submit"
 									className="w-full bg-black text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
 								>
-									Create an account
+									{state.isLoading && <Loader />}
+									{!state.isLoading && 'Create an account'}
 								</button>
 								<p className="text-sm font-light text-gray-500 dark:text-gray-400">
 									Already have an account?{' '}

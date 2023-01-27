@@ -9,6 +9,7 @@ const initialState = {
 	isLoading: false,
 	hasError: false,
 	errorMessage: '',
+	registerSuccess: false,
 } as RegisterInitialState;
 
 export const registerUser = createAsyncThunk(
@@ -33,16 +34,20 @@ export const registerSlice = createSlice({
 			state.isLoading = true;
 			state.hasError = false;
 			state.errorMessage = '';
+			state.registerSuccess = false;
 		});
 		builder.addCase(registerUser.fulfilled, (state, action) => {
 			state.isLoading = false;
 			state.hasError = false;
 			state.errorMessage = '';
+			state.registerSuccess = true;
 		});
 		builder.addCase(registerUser.rejected, (state, action) => {
 			state.isLoading = false;
 			state.hasError = true;
 			state.errorMessage = '';
+
+			state.registerSuccess = false;
 		});
 	},
 });

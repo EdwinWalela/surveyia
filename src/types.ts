@@ -35,6 +35,7 @@ export interface RegisterInitialState {
 	isLoading: boolean;
 	hasError: boolean;
 	errorMessage: '';
+	registerSuccess: boolean;
 }
 
 export interface LoginInitialState {
@@ -50,6 +51,7 @@ export interface User {
 	email: string;
 	password: string;
 	phoneNumber: string;
+	username: string;
 }
 
 export interface SurveyQuestion {

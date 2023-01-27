@@ -10,7 +10,7 @@ const register = async (user: User) => {
 			email: user.email,
 			password: user.password,
 			phone: user.phoneNumber,
-			name: 'username',
+			name: user.username,
 		});
 	} catch (error: any) {
 		throw new Error(`Failed to register: ${error.message}`);
