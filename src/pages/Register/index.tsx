@@ -26,12 +26,14 @@ const RegisterPage = () => {
 	}, [state.registerSuccess]);
 
 	useEffect(() => {
-		if (password.length < 5) {
-			setPasswordValid(false);
-			setPasswordError('Password is too short');
-		} else {
-			setPasswordError('');
-			setPasswordValid(true);
+		if (password) {
+			if (password.length < 5) {
+				setPasswordValid(false);
+				setPasswordError('Password is too short');
+			} else {
+				setPasswordError('');
+				setPasswordValid(true);
+			}
 		}
 	}, [password]);
 
@@ -49,7 +51,7 @@ const RegisterPage = () => {
 		if (phoneNumber) {
 			setPhoneNumberValid(phoneNumber.length == 9);
 		}
-	});
+	}, [phoneNumber]);
 
 	function updatePassword(e: React.FormEvent<HTMLInputElement>) {
 		setPassword(e.currentTarget.value);
@@ -91,7 +93,7 @@ const RegisterPage = () => {
 				<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto mt-4 md:mt-0 md:h-screen lg:py-0">
 					<div className="w-full bg-white rounded-lg shadow-lg dark:border md:mt-0 sm:max-w-md xl:p-0 ">
 						<div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-							<h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+							<h1 className="text-xl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2x">
 								Create an account
 							</h1>
 							<form className="space-y-4 md:space-y-6" action="#" onSubmit={submitForm}>

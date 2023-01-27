@@ -3,7 +3,7 @@ import surveyIcon from '../../assets/survey.svg';
 
 const LandingPage = () => {
 	return (
-		<div className="md:flex p-10 m-0">
+		<div className="md:flex md:p-10 py-10 px-6 m-0">
 			<div className="md:w-1/2">
 				<h1 className="md:text-5xl md:mt-16 text-2xl font-medium leading-10">
 					Get <strong className="text-blue-500">10x</strong> More Responses{' '}
