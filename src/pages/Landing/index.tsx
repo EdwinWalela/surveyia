@@ -9,7 +9,7 @@ const LandingPage = () => {
 					Get <strong className="text-blue-500">10x</strong> More Responses{' '}
 					<br className="hidden md:block" /> On Your Surveys
 				</h1>
-				<p className="md:text-lg text-sm mt-3">
+				<p className="md:text-lg text-md mt-3">
 					Create surveys and incentivize your target audience with{' '}
 					<br className="hidden md:block" />{' '}
 					<strong className="text-blue-500">airtime rewards </strong>to increase conversion.
