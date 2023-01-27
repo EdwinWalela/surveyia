@@ -25,7 +25,7 @@ export const loginUser = createAsyncThunk(
 );
 
 export const loginSlice = createSlice({
-	name: 'register-slice',
+	name: 'login-slice',
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
@@ -42,7 +42,7 @@ export const loginSlice = createSlice({
 		builder.addCase(loginUser.rejected, (state, action) => {
 			state.isLoading = false;
 			state.hasError = true;
-			state.errorMessage = '';
+			state.errorMessage = String(action.payload);
 		});
 	},
 });

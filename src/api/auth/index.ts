@@ -26,7 +26,12 @@ const login = async (user: User) => {
 			password: user.password,
 		});
 	} catch (error: any) {
-		throw new Error(`Failed to register: ${error.message}`);
+		switch (error.response.status) {
+			case 403:
+				throw new Error(`Credentials provided are invalid. Please try again `);
+			default:
+				throw new Error(`Failed to login. Please try again `);
+		}
 	}
 	return response.data;
 };

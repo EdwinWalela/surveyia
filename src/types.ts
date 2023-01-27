@@ -43,7 +43,7 @@ export interface LoginInitialState {
 	token: string;
 	isLoading: boolean;
 	hasError: boolean;
-	errorMessage: '';
+	errorMessage: string;
 }
 
 export interface User {
