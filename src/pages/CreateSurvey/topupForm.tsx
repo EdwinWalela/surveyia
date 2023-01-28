@@ -7,8 +7,12 @@ const TopupForm = () => {
 	const state = useAppSelector((state) => state.createSurvey);
 
 	const payout = state.payout;
-	const topup = state.topup;
-	const responses = topup / payout;
+	let topup = state.topup;
+	let responses = topup / payout;
+
+	if (payout > topup && topup != 0) {
+		// alert('Payout should be more than amount to load');
+	}
 
 	function handleTopUpChange(e: React.FormEvent<HTMLInputElement>) {
 		dispatch(updateTopUp(Number(e.currentTarget.value)));

@@ -74,7 +74,6 @@ const NewQuestionForm = (props: { index: number }) => {
 				/>
 				<label className="font-medium block my-2">Question Type</label>
 				<select className="p-2" onChange={handleTypeChange}>
-					<option value="Choice">Choice</option>
 					<option value="Multiple Choice">Multiple Choice</option>
 				</select>
 				<label className="font-medium block my-2">Choices</label>
@@ -92,8 +91,10 @@ const NewQuestionForm = (props: { index: number }) => {
 				<input
 					onClick={handleUpdateRequired}
 					type="radio"
-					value="Required question"
+					value="required"
 					className="mr-2"
+					checked={required}
+					defaultChecked
 				/>
 				<label className="">Required question</label>
 			</div>
