@@ -40,14 +40,14 @@ const FormHeader = () => {
 				value={title}
 				onChange={handleTitleChange}
 				placeholder="Title"
-				className="block mx-auto my-2 border border-black rounded-md py-2 px-5 tracking-wide md:w-3/5"
+				className="block mx-auto my-2 border border-black rounded-md py-2 md:px-5  px-3 tracking-wide md:w-3/5 w-full"
 			/>
 			<label className="text-sm">Provide a short description for your survey</label>
 			<textarea
 				value={description}
 				onChange={handleDescriptionChange}
 				placeholder="Survey description"
-				className="block mx-auto my-2 border border-black rounded-md py-2 px-5 md:w-3/5"
+				className="block mx-auto my-2 border border-black rounded-md py-2 md:px-5 px-3 md:w-3/5 w-full"
 				rows={5}
 			/>
 

@@ -22,19 +22,8 @@ const TopupForm = () => {
 		dispatch(updatePayout(Number(e.currentTarget.value)));
 	}
 
-	function handlePreviousStep(e: React.FormEvent) {
-		e.preventDefault();
-		dispatch(updateActivePage(1));
-	}
-
 	return (
 		<div className="mt-8">
-			<button
-				onClick={handlePreviousStep}
-				className="bg-black text-white float-left px-4 py-2 rounded-lg  mx-6 border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out"
-			>
-				Go Back
-			</button>
 			<div className="flex justify-center">
 				<div className="mx-5">
 					<label className="font-medium block my-2">Specify Payout Per Respondent</label>

@@ -18,19 +18,8 @@ const Questions = (props: { questions: SurveyQuestion[] }) => {
 		dispatch(updateActivePage(2));
 	}
 
-	function handlePreviousStep(e: React.FormEvent) {
-		e.preventDefault();
-		dispatch(updateActivePage(0));
-	}
-
 	return (
 		<div className="text-center">
-			<button
-				onClick={handlePreviousStep}
-				className="bg-black text-white float-left px-4 py-2 rounded-lg  mx-6 border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out"
-			>
-				Go Back
-			</button>
 			{props.questions.map((question, i) => (
 				<NewQuestionForm index={i} />
 			))}
