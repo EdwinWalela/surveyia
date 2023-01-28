@@ -34,21 +34,20 @@ const FormHeader = () => {
 
 	return (
 		<div className="text-center mx-auto">
-			<label>Provide a title for your survey</label>
+			<label className="text-sm">Provide a title for your survey</label>
 			<input
 				type="text"
 				value={title}
 				onChange={handleTitleChange}
 				placeholder="Title"
-				className="block mx-auto my-2 border border-black rounded-md py-2 px-5 text-lg tracking-wide"
+				className="block mx-auto my-2 border border-black rounded-md py-2 px-5 tracking-wide md:w-3/5"
 			/>
-			<label>Provide a short description for your survey</label>
+			<label className="text-sm">Provide a short description for your survey</label>
 			<textarea
 				value={description}
 				onChange={handleDescriptionChange}
 				placeholder="Survey description"
-				className="block mx-auto my-2 border border-black rounded-md py-2 px-5"
-				cols={50}
+				className="block mx-auto my-2 border border-black rounded-md py-2 px-5 md:w-3/5"
 				rows={5}
 			/>
 

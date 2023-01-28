@@ -13,7 +13,7 @@ const NewQuestionForm = (props: { index: number }) => {
 	const questions = useAppSelector((state) => state.createSurvey.questions);
 	const choices = questions[props.index].choices;
 
-	const [title, updateTitle] = useState('');
+	const [title, updateTitle] = useState(questions[props.index].title);
 	const [type, updateType] = useState('');
 	const [required, updateRequired] = useState(false);
 
@@ -68,6 +68,7 @@ const NewQuestionForm = (props: { index: number }) => {
 				<input
 					type="text"
 					onChange={handleTitleChange}
+					value={title}
 					placeholder="Enter question"
 					className="block  my-2 border border-black rounded-md p-2 text-md tracking-wide w-full"
 				/>

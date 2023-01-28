@@ -27,7 +27,11 @@ const SurveyForm = () => {
 	}
 
 	return (
-		<form action="" className="shadow-md" onSubmit={handleSubmit}>
+		<form
+			action=""
+			className="shadow-md md:w-3/4 mx-auto bg-white py-5 rounded-lg"
+			onSubmit={handleSubmit}
+		>
 			{state.surveyId && (
 				<Link
 					to={`/survey/${state.surveyId}`}
