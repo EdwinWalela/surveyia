@@ -28,7 +28,7 @@ const TopupForm = () => {
 	}
 
 	return (
-		<div className="mt-8">
+		<div className="mt-8 px-4">
 			<div className="md:flex justify-center">
 				<div className="mx-5 my-6 md:my-0">
 					<label className="font-medium block my-2">Specify Payout Per Respondent</label>

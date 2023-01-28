@@ -65,7 +65,7 @@ const NewQuestionForm = (props: { index: number }) => {
 	}
 
 	return (
-		<div className="md:w-3/5 text-center mx-auto md:py-10 md:px-10 px-4  bg-white my-8 rounded-lg">
+		<div className="text-center mx-auto md:py-10 md:px-5 px-4  bg-white my-8 rounded-lg">
 			{title.length > 0 && (
 				<img
 					src={trashIcon}
