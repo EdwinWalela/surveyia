@@ -76,13 +76,13 @@ const ProgressBar = () => {
 			</div>
 
 			<div className="flex text-xs content-center text-center">
-				<div className="w-1/4">Survey Title</div>
+				<div className={activePage == 0 ? 'w-1/4 font-medium' : 'w-1/4'}>Survey Title</div>
 
-				<div className="w-1/4">Questions</div>
+				<div className={activePage == 1 ? 'w-1/4 font-medium' : 'w-1/4'}>Questions</div>
 
-				<div className="w-1/4">Payout</div>
+				<div className={activePage == 2 ? 'w-1/4 font-medium' : 'w-1/4'}>Payout</div>
 
-				<div className="w-1/4">Confirmation</div>
+				<div className={activePage == 3 ? 'w-1/4 font-medium' : 'w-1/4'}>Confirmation</div>
 			</div>
 		</div>
 	);
