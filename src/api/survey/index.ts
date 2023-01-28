@@ -25,7 +25,15 @@ const create = async (survey: Survey) => {
 			requestConfig
 		);
 	} catch (error: any) {
-		throw new Error(`Failed to create survey: ${error.message}`);
+		switch (error.response.code) {
+			case 401:
+				throw new Error('Session has expired. Please sign in.');
+			case 403:
+				throw new Error('Session has expired. Please sign in.');
+
+			default:
+				throw new Error('Failed to create survey. Please try again.');
+		}
 	}
 	return response.data;
 };

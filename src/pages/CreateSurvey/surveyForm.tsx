@@ -30,7 +30,7 @@ const SurveyForm = () => {
 	return (
 		<form
 			action=""
-			className="shadow-md md:w-3/4 mx-auto bg-white md:py-5 py-1 px-5 rounded-lg"
+			className="shadow-md md:w-3/5 mx-auto bg-white md:py-5 py-1 px-5 rounded-lg"
 			onSubmit={handleSubmit}
 		>
 			{state.surveyId && (

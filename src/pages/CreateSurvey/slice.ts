@@ -22,7 +22,6 @@ export const createSurvey = createAsyncThunk(
 		let res;
 		try {
 			res = await api.create(survey);
-			console.log(res);
 		} catch (error: any) {
 			return rejectWithValue(error.message);
 		}
@@ -105,7 +104,7 @@ export const createSurveySlice = createSlice({
 		builder.addCase(createSurvey.rejected, (state, action) => {
 			state.isLoading = false;
 			state.hasError = true;
-			state.errorMessage = '';
+			state.errorMessage = String(action.payload);
 		});
 	},
 });
