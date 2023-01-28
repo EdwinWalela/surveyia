@@ -5,6 +5,7 @@ import { createQuestion, createSurvey, submitSurvey } from './slice';
 import TopupForm from './topupForm';
 import { Link, Route, Routes } from 'react-router-dom';
 import Questions from './questions';
+import ConfirmSurvey from './confirmSurvey';
 
 const SurveyForm = () => {
 	const questions = useAppSelector((state) => state.createSurvey.questions);
@@ -43,11 +44,7 @@ const SurveyForm = () => {
 			{state.activePage == 0 && <FormHeader />}
 			{state.activePage == 1 && <Questions questions={questions} />}
 			{state.activePage == 2 && <TopupForm />}
-			{state.activePage == 2 && (
-				<button className="w-full md:w-3/5 bg-black text-white px-4 py-3 rounded-lg block mx-auto my-8 border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out">
-					Create Survey
-				</button>
-			)}
+			{state.activePage == 3 && <ConfirmSurvey />}
 		</form>
 	);
 };
