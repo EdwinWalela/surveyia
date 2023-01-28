@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
+import trashIcon from '../../assets/trash.svg';
 import ChoiceInput from './choiceInput';
 import {
 	addQuestionChoice,
+	deleteQuestion,
 	updateQuestionRequired,
 	updateQuestionTitle,
 	updateQuestionType,
@@ -16,6 +18,10 @@ const NewQuestionForm = (props: { index: number }) => {
 	const [title, updateTitle] = useState(questions[props.index].title);
 	const [type, updateType] = useState('');
 	const [required, updateRequired] = useState(false);
+
+	function handleDeleteQuestion() {
+		dispatch(deleteQuestion(props.index));
+	}
 
 	function handleTitleChange(e: React.FormEvent<HTMLInputElement>) {
 		e.preventDefault();
@@ -60,10 +66,25 @@ const NewQuestionForm = (props: { index: number }) => {
 
 	return (
 		<div className="md:w-3/5 text-center mx-auto md:py-10 md:px-10 px-4  bg-white my-8 rounded-lg">
+			{title.length > 0 && (
+				<img
+					src={trashIcon}
+					onClick={handleDeleteQuestion}
+					className="w-5 float-right relative bottom-5 left-2"
+				/>
+			)}
 			<label className="bg-black text-white px-2 py-1  rounded-full mr-2 md:text-xl">
 				{props.index + 1}
 			</label>
-			<h3 className="inline md:text-lg font-medium">{title}</h3>
+			<h3
+				className={
+					title.length > 35
+						? 'inline md:text-lg text-xs font-medium'
+						: 'inline md:text-lg font-medium'
+				}
+			>
+				{title}
+			</h3>
 			<div>
 				<input
 					type="text"
