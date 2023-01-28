@@ -58,7 +58,7 @@ const TopupForm = () => {
 			</h1>
 			<button
 				onClick={handleNextStep}
-				className="w-full md:w-3/5 bg-black text-white px-4 py-3 rounded-lg block mx-auto my-8 border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out"
+				className="w-full md:w-3/5 bg-blue-500 text-white px-4 py-3 rounded-lg block mx-auto my-8 border hover:border-black active:scale-95 hover:bg-white hover:text-blue-500 transition-all ease-in-out"
 			>
 				Confirm Details
 			</button>

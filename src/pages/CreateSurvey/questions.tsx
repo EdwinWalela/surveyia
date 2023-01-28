@@ -25,14 +25,14 @@ const Questions = (props: { questions: SurveyQuestion[] }) => {
 			))}
 			<button
 				onClick={handleAddQuestion}
-				className="bg-black text-white px-4 py-2 rounded-lg  mx-6 my-3 border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out"
+				className="text-blue-500 font-medium px-4 py-2 rounded-lg  mx-6 my-3 border-2 border-blue-500 hover:border-blue-500 active:scale-95 hover:bg-white hover:text-blue-500 transition-all ease-in-out"
 			>
 				Add {props.questions.length > 0 ? 'Another' : ''} Question
 			</button>
 			<h3 className="md:hidden block">Or</h3>
 			<button
 				onClick={handleNextStep}
-				className="bg-black text-white px-4 py-2 rounded-lg  mx-6 my-3 border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out"
+				className="bg-blue-500 text-white px-4 py-2 rounded-lg  mx-6 my-3 border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out"
 			>
 				Proceed To Next Step
 			</button>

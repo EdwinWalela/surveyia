@@ -53,7 +53,7 @@ const FormHeader = () => {
 
 			<button
 				onClick={handleAddQuestion}
-				className="bg-black text-white px-4 py-2 rounded-lg block mx-auto border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out"
+				className="bg-blue-500 text-white px-4 py-2 rounded-lg block mx-auto border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out"
 			>
 				Add Questions
 			</button>

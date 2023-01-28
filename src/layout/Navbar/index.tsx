@@ -10,7 +10,7 @@ const NavBar = () => {
 	return (
 		<div className="flex shadow-md md:px-5 py-3">
 			<div>
-				<h1 className="text-2xl md:pl-0 pl-3">
+				<h1 className="text-2xl md:pl-0 pl-3 text-blue-500 font-medium">
 					<Link to="/">Surveyia</Link>
 				</h1>
 			</div>
@@ -33,8 +33,8 @@ const NavBar = () => {
 						to="/login"
 						className={({ isActive }) =>
 							!isActive
-								? 'mx-3 bg-black text-white py-2 px-4 rounded-lg border-2 border-black'
-								: 'mx-3 bg-white text-black py-2 px-4 rounded-lg border-2 border-black'
+								? 'mx-3 bg-blue-500 text-white py-2 px-4 rounded-lg border-2 border-blue-500'
+								: 'mx-3 bg-white text-blue-500 py-2 px-4 rounded-lg border-2 border-blue-500'
 						}
 					>
 						Sign In
@@ -44,8 +44,8 @@ const NavBar = () => {
 							to="/sign-up"
 							className={({ isActive }) =>
 								!isActive && !home
-									? 'mx-3 bg-black text-white py-2 px-4 rounded-lg border-2 border-black'
-									: 'mx-3 bg-white text-black py-2 px-4 rounded-lg border-2 border-black'
+									? 'mx-3 bg-blue-500 text-white py-2 px-4 rounded-lg border-2 border-blue-500'
+									: 'mx-3 bg-white text-blue-500 py-2 px-4 rounded-lg border-2 border-blue-500'
 							}
 						>
 							Sign Up

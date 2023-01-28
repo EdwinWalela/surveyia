@@ -18,7 +18,7 @@ const LandingPage = () => {
 					<img src={surveyIcon} className="md:w-96 md:ml-0 ml-8 mx-auto md:hidden block" />
 				</div>
 				<Link to="/sign-up">
-					<button className="bg-black text-white text-lg py-3 px-6 rounded-lg mt-6 w-full md:w-auto">
+					<button className="bg-blue-500 text-white text-lg py-3 px-6 rounded-lg mt-6 w-full md:w-auto">
 						Get Started
 					</button>
 				</Link>

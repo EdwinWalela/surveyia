@@ -73,7 +73,7 @@ const NewQuestionForm = (props: { index: number }) => {
 					className="w-5 float-right relative bottom-5 left-2"
 				/>
 			)}
-			<label className="bg-black text-white px-2 py-1  rounded-full mr-2 md:text-xl">
+			<label className="bg-blue-500 text-white px-2 py-1  rounded-full mr-2 md:text-xl">
 				{props.index + 1}
 			</label>
 			<h3
@@ -104,7 +104,7 @@ const NewQuestionForm = (props: { index: number }) => {
 				))}
 				<button
 					onClick={handleAddChoice}
-					className="bg-black text-white px-4 py-2 rounded-lg block mx-auto border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out"
+					className="bg-blue-500 text-white px-4 py-2 rounded-lg block mx-auto border hover:border-black active:scale-95 hover:bg-white hover:text-black transition-all ease-in-out"
 				>
 					Add Choice
 				</button>
