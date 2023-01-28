@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { updateQuestionChoice } from './slice';
+import { deleteQuestionChoice, updateQuestionChoice } from './slice';
+import crossIcon from '../../assets/crossIcon.svg';
 
 const ChoiceInput = (props: { choiceIndex: number; questionIndex: number }) => {
 	const dispatch = useAppDispatch();
@@ -17,14 +18,26 @@ const ChoiceInput = (props: { choiceIndex: number; questionIndex: number }) => {
 		);
 	}
 
+	function handleDeleteChoice() {
+		dispatch(
+			deleteQuestionChoice({
+				questionIndex: props.questionIndex,
+				choiceIndex: props.choiceIndex,
+			})
+		);
+	}
+
 	return (
-		<input
-			type="text"
-			placeholder="Enter choice"
-			onChange={handleOnChange}
-			value={value}
-			className="block mx-auto my-2 border border-black rounded-md p-2 text-md tracking-wide"
-		/>
+		<div className="flex">
+			<input
+				type="text"
+				placeholder="Enter choice"
+				onChange={handleOnChange}
+				value={value}
+				className=" mx-auto my-2 border border-black rounded-md p-2 text-md tracking-wide w-4/5"
+			/>
+			<img src={crossIcon} className="w-6" onClick={handleDeleteChoice} />
+		</div>
 	);
 };
 

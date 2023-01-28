@@ -33,7 +33,7 @@ const FormHeader = () => {
 	}
 
 	return (
-		<div className="text-center mx-auto">
+		<div className="text-center mx-auto my-4">
 			<label className="text-sm">Provide a title for your survey</label>
 			<input
 				type="text"

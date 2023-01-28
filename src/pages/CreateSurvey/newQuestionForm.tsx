@@ -59,18 +59,18 @@ const NewQuestionForm = (props: { index: number }) => {
 	}
 
 	return (
-		<div className="md:w-3/5 text-center mx-auto py-10 px-10 shadow-lg bg-white my-8 rounded-lg">
-			<label className="bg-black text-white px-2 py-1  rounded-full mr-2 text-xl">
+		<div className="md:w-3/5 text-center mx-auto md:py-10 md:px-10 px-4  bg-white my-8 rounded-lg">
+			<label className="bg-black text-white px-2 py-1  rounded-full mr-2 md:text-xl">
 				{props.index + 1}
 			</label>
-			<h3 className="inline text-lg font-medium">{title}</h3>
+			<h3 className="inline md:text-lg font-medium">{title}</h3>
 			<div>
 				<input
 					type="text"
 					onChange={handleTitleChange}
 					value={title}
 					placeholder="Enter question"
-					className="block  my-2 border border-black rounded-md p-2 text-md tracking-wide w-full"
+					className="block  my-4 border border-black rounded-md p-2 text-md md:tracking-wide w-full"
 				/>
 				<label className="font-medium block my-2">Question Type</label>
 				<select className="p-2" onChange={handleTypeChange}>

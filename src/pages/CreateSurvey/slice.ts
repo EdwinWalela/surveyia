@@ -52,6 +52,11 @@ export const createSurveySlice = createSlice({
 			let index = action.payload.index;
 			state.questions[index].choices.push(action.payload.choice);
 		},
+		deleteQuestionChoice: (state, action) => {
+			let questionIndex = action.payload.questionIndex;
+			let choiceIndex = action.payload.choiceIndex;
+			state.questions[questionIndex].choices.splice(choiceIndex, 1);
+		},
 		updateQuestionChoice: (state, action) => {
 			let questionIndex = action.payload.questionIndex;
 			let choiceIndex = action.payload.choiceIndex;
@@ -114,5 +119,6 @@ export const {
 	updateQuestionType,
 	updateQuestionRequired,
 	updateActivePage,
+	deleteQuestionChoice,
 } = createSurveySlice.actions;
 export default createSurveySlice.reducer;
