@@ -59,7 +59,7 @@ const LandingPage = () => {
 					<br className="hidden md:block" />
 				</h1>
 				<p className="md:text-lg mb-5 text-center text-md mt-3">
-					Our intuitive dashboard provide you with all the information needed to keep track of your
+					Our intuitive dashboard provides you with all the information needed to keep track of your
 					surveys.
 				</p>
 				<img src={dashboardScreenShot} className="w-90 mx-auto " />
