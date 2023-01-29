@@ -10,7 +10,7 @@ const StatBar = () => {
 				<h1 className="text-lg mt-3 font-medium">Total Questionnaires</h1>
 			</div>
 			<div className="md:w-1/4 w-full bg-indigo-700 text-white md:float-left p-10 rounded-lg shadow-lg text-center mx-10 cursor-pointer hover:bg-white hover:text-indigo-700 border hover:border-indigo-700 transition-all ease-in-out">
-				<h1 className="text-4xl  font-medium">34</h1>
+				<h1 className="text-4xl  font-medium">+50</h1>
 				<h1 className="text-lg mt-3 font-medium">Total Respondents</h1>
 			</div>
 		</div>

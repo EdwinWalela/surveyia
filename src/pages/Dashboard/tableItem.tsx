@@ -3,11 +3,11 @@ import editIcon from '../../assets/edit.svg';
 import deleteIcon from '../../assets/delete.svg';
 import shareIcon from '../../assets/share.svg';
 
-const SurveyListTableItem = () => {
+const SurveyListTableItem = (props: { title: string }) => {
 	return (
 		<tr className=" even:bg-white odd:bg-gray-110">
 			<td style={{ maxWidth: 100 }} className="w-1/4 px-6 py-2 text-sm md:text-md">
-				My First Survey
+				{props.title}
 			</td>
 			<td className="w-1/4 px-6 py-2 text-sm max-w-xs md:text-md text-center">
 				<Link to="survey/1">

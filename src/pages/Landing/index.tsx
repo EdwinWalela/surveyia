@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import surveyIcon from '../../assets/2.png';
 import topUpScreenShot from '../../assets/3.png';
+import dashboardScreenShot from '../../assets/dashboard.png';
 
 const LandingPage = () => {
 	return (
@@ -46,11 +47,27 @@ const LandingPage = () => {
 						<img src={topUpScreenShot} className="md:w-96 mx-auto md:hidden block" />
 					</div>
 					<Link to="/sign-up">
-						<button className="bg-blue-500 text-white text-lg py-3 px-6 rounded-lg mt-6 w-full md:w-auto">
+						<button className="bg-blue-500 text-white text-lg py-3 px-6 rounded-lg mt-6 w-full md:w-auto hidden md:block">
 							Get Started
 						</button>
 					</Link>
 				</div>
+			</div>
+			<div className="w-full pb-20 px-6">
+				<h1 className="md:text-5xl text-center md:mt-16 text-2xl font-medium leading-10">
+					Manage Your Surveys With <strong className="text-blue-500">Ease.</strong>
+					<br className="hidden md:block" />
+				</h1>
+				<p className="md:text-lg mb-5 text-center text-md mt-3">
+					Our intuitive dashboard provide you with all the information needed to keep track of your
+					surveys.
+				</p>
+				<img src={dashboardScreenShot} className="w-90 mx-auto " />
+				<Link to="/sign-up">
+					<button className="bg-blue-500 text-white text-lg py-3 px-6 rounded-lg mt-6 md:w-1/4 w-full mx-auto block">
+						Create Your First Survey
+					</button>
+				</Link>
 			</div>
 		</div>
 	);

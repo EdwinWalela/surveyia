@@ -18,12 +18,9 @@ const SurveyListTable = () => {
 					</tr>
 				</thead>
 				<tbody>
-					<SurveyListTableItem />
-					<SurveyListTableItem />
-					<SurveyListTableItem />
-					<SurveyListTableItem />
-					<SurveyListTableItem />
-					<SurveyListTableItem />
+					<SurveyListTableItem title="Final Year Project Research - Impact of drought on low income families" />
+					<SurveyListTableItem title="New Year Office Party Feedback" />
+					<SurveyListTableItem title="Impact Of The Shift To Remote Work" />
 				</tbody>
 			</table>
 		</>
